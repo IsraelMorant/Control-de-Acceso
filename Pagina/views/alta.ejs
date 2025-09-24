@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración</title>
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/altaStyle.css">
+    <source>
+</head>
+<body >
+    <div class="container">
+
+    <h1>Alta Tarjeta</h1>
+    
+   
+    <form method="post" action="/insertar">
+      <%# Bloque para mostrar los mensajes de alerta %>
+<% if (typeof mensaje !== 'undefined' && mensaje) { %>
+    <div class="alerta exito">
+        <%= mensaje %>
+    </div>
+<% } %>
+
+<% if (typeof mensajeError !== 'undefined' && mensajeError) { %>
+    <div class="alerta error">
+        <%= mensajeError %>
+    </div>
+<% } %>
+      <div class="input-box">
+        <input name ="txtNom" type="text" placeholder="Nombre:" required>
+        <i class='bx bx-user-circle' ></i>
+      </div>
+      <div class="input-box">
+        <input name = "txtRango" type="text" placeholder="Rango:" required>
+       <i class='bx bx-face'></i>
+      </div>
+      <input type = "submit" name="btnInsertar" class="btn" value="Dar de alta">
+      
+      
+    
+
+     
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+
+    <h1>Eliminar Tarjeta</h1>
+    
+   
+    <form method="post" action="/eliminar">
+      <%# Bloque para mostrar los mensajes de alerta %>
+<% if (typeof mensaje !== 'undefined' && mensaje) { %>
+    <div class="alerta exito">
+        <%= mensaje %>
+    </div>
+<% } %>
+
+<% if (typeof mensajeError !== 'undefined' && mensajeError) { %>
+    <div class="alerta error">
+        <%= mensajeError %>
+    </div>
+<% } %>
+      
+        <h2>Pase la tarjeta</h2>
+        <i class='bx bx-user-circle' ></i>
+      
+    
+     
+      <input type="submit" name="btnEliminar" class="btn" value="Eliminar">
+     
+      
+    
+
+     
+    </form>
+  </div>
+
+</body>
+</html>

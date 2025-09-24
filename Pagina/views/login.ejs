@@ -1,0 +1,124 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lector de tarjetas</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="/loginStyle.css">
+
+</head>
+<body class="login">
+
+
+  <div class="container">
+
+    <h1>Iniciar Sesión</h1>
+    
+   
+    <form action="/login" method="post">
+     <%# Bloque para mostrar los mensajes de alerta %>
+<% if (typeof mensaje !== 'undefined' && mensaje) { %>
+    <div class="alerta exito">
+        <%= mensaje %>
+    </div>
+<% } %>
+
+<% if (typeof mensajeError !== 'undefined' && mensajeError) { %>
+    <div class="alerta error" >
+        <%= mensajeError %>
+    </div>
+<% } %>
+      <div class="input-box">
+        <input name ="txtusuario" type="text" placeholder="Usuario:" required>
+        <i class='bx bx-user-circle' ></i>
+      </div>
+      <div class="input-box">
+        <input name = "txtcontra" type="password" placeholder="Contraseña:" required>
+        <i class='bx bxs-lock-alt' ></i>
+      </div>
+      <input type = "submit" class="btn">
+      
+      <p>Status:</p>
+    
+    </form>
+    
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <div class="container">
+
+    <h1>Control</h1>
+    
+   
+    <form action="/consul" method="post">
+    
+      
+      <p>Acceso:</p>
+      <div id="alerta-fluida"></div>
+
+
+<script>
+    
+    function mostrarAlertaFluida(mensaje, tipo) {
+        const alertaDiv = document.getElementById('alerta-fluida');
+        
+        
+        alertaDiv.textContent = mensaje;
+        alertaDiv.className = 'alerta ' + tipo;
+        
+       
+        setTimeout(() => {
+            alertaDiv.className = '';
+            alertaDiv.textContent = '';
+        }, 5000);
+    }
+
+    
+    setInterval(async function() {
+        try {
+            
+            const respuesta = await fetch('/ultimo-acceso');
+            const data = await respuesta.json();
+
+           
+            if (data.mensaje) {
+                mostrarAlertaFluida(data.mensaje, data.tipo);
+            }
+        } catch (error) {
+           
+        }
+    }, 2000); 
+</script>
+    </form>
+    
+  </div>
+  
+ 
+ 
+</body>
+</html>
